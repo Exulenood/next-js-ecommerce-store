@@ -1,9 +1,8 @@
-export default function Head() {
+export default function RootHead() {
   return (
     <>
-      <title>PetKerm Boosters and Engines</title>
+      <title>P & J's Boosters and Engines</title>
       <meta name="description" content="We shoot you into orbit" />
-      {/* <link rel="icon" href="/PLACEHOLDER" /> */}
     </>
   );
 }
