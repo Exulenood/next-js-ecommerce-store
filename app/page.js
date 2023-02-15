@@ -1,5 +1,5 @@
 import Image from 'next/image';
-// import Link from 'next/link';
+import Link from 'next/link';
 import { Fragment } from 'react';
 import { getAllProducts } from '../databaseInterface';
 
@@ -15,13 +15,17 @@ export default async function HomePage() {
         {allProducts.map((product) => {
           return (
             <Fragment key={product.id}>
-              <h3>{product.productName}</h3>
-              <Image
-                src={`/${product.imgTn}`}
-                alt={`Image of ${product.name}`}
-                width="80"
-                height="80"
-              />
+              <Link href={`/${product.id}`}>
+                <h3>{product.productName}</h3>
+              </Link>
+              <Link href={`/${product.id}`}>
+                <Image
+                  src={`/${product.imgTn}`}
+                  alt={`Image of ${product.name}`}
+                  width="80"
+                  height="80"
+                />
+              </Link>
               <table>
                 <tbody>
                   <tr>
