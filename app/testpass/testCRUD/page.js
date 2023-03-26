@@ -5,7 +5,6 @@ import TestCrudExe from './testCrudExecute';
 export default async function TestCRUD() {
   const testCookie = cookies().get('cookiePass');
   console.log(testCookie);
-  console.log(typeof testCookie);
 
   let testCookieParsed = [];
 

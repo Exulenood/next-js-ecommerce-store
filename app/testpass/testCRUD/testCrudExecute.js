@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { getTestCookie, removeTestCookie, setTestCookie } from '../testCookies';
 
 export default function TestCrudExe() {
+  // type TestQuanReturnvalue =
+
   useEffect(() => {
     removeTestCookie('cookiePass');
   }, []);

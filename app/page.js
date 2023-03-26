@@ -1,10 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Fragment } from 'react';
-import { getAllProducts } from '../databaseInterface';
+import { getAllProducts } from './databaseInterface';
 
 export default async function HomePage() {
   const allProducts = await getAllProducts();
+
   // console.log(allProducts[0]);
 
   return (

@@ -4,6 +4,38 @@ import { Fragment } from 'react';
 import { getTestItems } from './testdatabase';
 
 export default async function TestPassPage() {
+  type TestTypescript = {
+    testNumber: number;
+    testString: string;
+    testBoolean?: boolean;
+  };
+  /**
+   * TestBoolean is optional - so also a returned undefined is ok
+   * this is an Typescript hint btw - it shows when hovered over the variable
+   */
+
+  const testTSO1: TestTypescript = {
+    testNumber: 9999,
+    testString: 'mestringy',
+    testBoolean: true,
+  };
+
+  const testTSO2: TestTypescript = {
+    testNumber: 1111,
+    testString: 'mestringytoo',
+    testBoolean: false,
+  };
+
+  const testTSO3: TestTypescript = {
+    testNumber: 5555,
+    testString: 'mestringyaswell',
+  };
+
+  const testTSOArray: TestTypescript[] = [testTSO1, testTSO2, testTSO3];
+
+  console.log(testTSO1);
+  console.log(testTSOArray);
+
   const testItems = await getTestItems();
 
   return (

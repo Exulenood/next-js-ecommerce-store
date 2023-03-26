@@ -50,3 +50,5 @@ VALUES
   `;
   return testInsertCart;
 }
+
+// checkoutMerge Functions

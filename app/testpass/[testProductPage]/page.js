@@ -3,17 +3,17 @@ import { getTestItem } from '../testdatabase';
 import TestCartPass from './testCartPass.js';
 
 export default async function TestItemPage(props) {
-  const singleProduct = await getTestItem(props.params.testProductPage);
-  console.log(singleProduct);
+  const singleProduc = await getTestItem(props.params.testProductPage);
+  console.log(singleProduc);
 
   return (
     <div>
-      <h1>Test Item Page / Item {singleProduct.id}</h1>
-      <h2>{singleProduct.name}</h2>
-      <div>{`${singleProduct.price} €`}</div>
+      <h1>Test Item Page / Item {singleProduc.id}</h1>
+      <h2>{singleProduc.name}</h2>
+      <div>{`${singleProduc.price} €`}</div>
       <Image
-        src={`/${singleProduct.imageFileName}`}
-        alt={`Image of ${singleProduct.name}`}
+        src={`/${singleProduc.imageFileName}`}
+        alt={`Image of ${singleProduc.name}`}
         width="200"
         height="100"
       />

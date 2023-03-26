@@ -1,9 +1,45 @@
+import { cookies } from 'next/headers';
 import Image from 'next/image';
-import { getProductById } from '../../databaseInterface';
+import {
+  addToCartDatabase,
+  getProductById,
+  searchExistingCartEntry,
+} from '../databaseInterface';
+import InputAndPass from './inputAndPass';
 
 export default async function DedicatedProductPage(props) {
-  const singleProduct = await getProductById(props.params.productPage);
-  console.log(singleProduct);
+  const currentId = parseInt(props.params.productPage);
+  // const singleProduct = await getProductById(props.params.productPage);
+  const singleProduct = await getProductById(currentId);
+  const addCartCookie = cookies().get('cartAdd');
+  let cartActualize;
+  // console.log(addCartCookie);
+  // console.log(typeof addCartCookie);
+  // console.log(singleProduct);
+
+  if (addCartCookie) {
+    const cartCookieParsed = JSON.parse(addCartCookie.value);
+    const positionPrice = cartCookieParsed.quantity * singleProduct.price;
+    const alreadyAdded = await searchExistingCartEntry(
+      cartCookieParsed.timestamp,
+    );
+    if (alreadyAdded === false) {
+      // console.log(cartCookieParsed.id);
+      // console.log(cartCookieParsed.quantity);
+      // console.log(typeof cartCookieParsed.quantity);
+      // console.log(cartCookieParsed.timestamp);
+      await addToCartDatabase(
+        cartCookieParsed.id,
+        cartCookieParsed.quantity,
+        cartCookieParsed.timestamp,
+        positionPrice,
+      );
+      cartActualize = new Date().valueOf();
+    } else {
+      console.log('cart entry already exists!');
+    }
+    // console.log(cartCookieParsed);
+  }
 
   return (
     <div>
@@ -63,7 +99,7 @@ export default async function DedicatedProductPage(props) {
         width="600"
         height="400"
       />
-
+      <InputAndPass currentId={currentId} cartActualize={cartActualize} />
     </div>
   );
 }
